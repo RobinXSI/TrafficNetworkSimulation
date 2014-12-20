@@ -1,7 +1,3 @@
-// Forward Declaration because of Circular Dependency
-class Link;
-
-typedef long Id;
 typedef double Coordinate;
 
 class Node {
@@ -11,8 +7,8 @@ private:
     Coordinate yy; // NORTHING
 
     typedef std::vector<Link*> VLinks;
-    VLinks outLinks;
-    VLinks inLinks;
+    VLinks outgoingLinks;
+    VLinks incomingLinks;
 
 public:
     void setId(Id value) { id = value; }
@@ -24,11 +20,31 @@ public:
     void setYY(Coordinate value) { yy = value; }
     Coordinate  getYY() { return yy; }
 
-    void addOutLink(Link* link) { outLinks.push_back(link); }
-    Link* getOutLink(int i) { return outLinks[i]; }
-    int countOutLinks() { return outLinks.size(); }
+    void addOutgoingLink(Link* link) { outgoingLinks.push_back(link); }
+    Link* getOutgoingLink(int i) { return outgoingLinks[i]; }
+    int countOutgoingLinks() { return outgoingLinks.size(); }
 
-    void addInLink(Link* link) { inLinks.push_back(link); }
-    Link* getInLink(int i) { return inLinks[i]; }
-    int countInLinks() { return inLinks.size(); }
+    void addIncomingLink(Link* link) { incomingLinks.push_back(link); }
+    Link* getIncomingLink(int i) { return incomingLinks[i]; }
+    int countIncomingLinks() { return incomingLinks.size(); }
+
+
+    void randomMoveToLink() {
+        for(VLinks::iterator ll = incomingLinks.begin(); ll != incomingLinks.end(); ++ll) {
+            Link* incomingLink = (Link *) *ll;
+            Vehicle* vehicle = incomingLink->firstOnLink(); // NULL if none
+            if(vehicle != NULL) {
+                int numberOfOutgoingLinks = outgoingLinks.size();
+                int outgoingLinkIdx = int(myRand() * numberOfOutgoingLinks);
+                Link* theOutgoingLink = getOutgoingLink(outgoingLinkIdx);
+                if(theOutgoingLink->hasSpace()) {
+                    incomingLink->removeFirstOnLink();
+                    theOutgoingLink->addVehicleToLink(vehicle);
+                }
+            }
+        }
+    }
+    void move() {
+        randomMoveToLink();
+    }
 };

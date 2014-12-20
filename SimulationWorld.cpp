@@ -1,7 +1,6 @@
 #include "SimulationWorld.h"
 #include <fstream>
 #include <iostream>
-#include <assert.h>
 
 const char* NODES_FILE_NAME = "/Users/robin/ClionProjects/TrafficNetworkSimulation/TNodes.txt";
 const char* LINKS_FILE_NAME = "/Users/robin/ClionProjects/TrafficNetworkSimulation/TLinks.txt";
@@ -50,8 +49,8 @@ void SimulationWorld::readLinks() {
             link->setFromNode(fromNode);
             link->setToNode(toNode);
             link->setLength(length);
-            fromNode->addOutLink(link);
-            toNode->addInLink(link);
+            fromNode->addOutgoingLink(link);
+            toNode->addIncomingLink(link);
         }
     }
     std::cout << "nLinks: " << links.size() << "\n";

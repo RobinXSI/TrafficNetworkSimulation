@@ -2,8 +2,11 @@
 #include <vector>
 #include <string>
 #include <sstream>
-#include "Node.h"
+#include "global.h"
+#include <assert.h>
+#include "Vehicle.h"
 #include "Link.h"
+#include "Node.h"
 
 
 
