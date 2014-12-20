@@ -1,0 +1,71 @@
+<network>
+<nodes>
+<node id="10" x="0" y="2000"/>
+<node id="20" x="0" y="1000"/>
+<node id="30" x="0" y="0"/>
+<node id="40" x="1000" y="2000"/>
+<node id="50" x="1000" y="1000"/>
+<node id="60" x="1000" y="0"/>
+<node id="70" x="2000" y="2000"/>
+<node id="80" x="2000" y="1000"/>
+<node id="90" x="2000" y="0"/>
+<node id="100" x="3000" y="2000"/>
+<node id="110" x="3000" y="1000"/>
+<node id="120" x="3000" y="0"/>
+<node id="130" x="4000" y="2000"/>
+<node id="140" x="4000" y="1000"/>
+<node id="150" x="4000" y="0"/>
+<node id="160" x="5000" y="2000"/>
+<node id="170" x="5000" y="1000"/>
+<node id="180" x="5000" y="0"/>
+<node id="190" x="6000" y="2000"/>
+<node id="200" x="6000" y="1000"/>
+<node id="210" x="6000" y="0"/>
+<node id="220" x="7000" y="2000"/>
+<node id="230" x="7000" y="1000"/>
+<node id="240" x="7000" y="0"/>
+</nodes>
+<links capdivider="12" capperiod="12:00">
+<link id="100" from="10" to="40" length="1000" capacity="21600" freespeed="7.5" functclass="PRIARTER"/>
+<link id="200" from="20" to="50" length="1000" capacity="21600" freespeed="7.5" functclass="PRIARTER"/>
+<link id="300" from="30" to="60" length="1000" capacity="21600" freespeed="7.5" functclass="PRIARTER"/>
+<link id="400" from="40" to="70" length="1000" capacity="21600" freespeed="7.5" functclass="PRIARTER"/>
+<link id="401" from="40" to="50" length="1000" capacity="21600" freespeed="7.5" functclass="PRIARTER"/>
+<link id="500" from="50" to="80" length="999" capacity="21600" freespeed="7.5" functclass="PRIARTER"/>
+<link id="501" from="50" to="40" length="1000" capacity="21600" freespeed="7.5" functclass="PRIARTER"/>
+<link id="502" from="50" to="60" length="1000" capacity="21600" freespeed="7.5" functclass="PRIARTER"/>
+<link id="600" from="60" to="90" length="1000" capacity="21600" freespeed="7.5" functclass="PRIARTER"/>
+<link id="601" from="60" to="50" length="1000" capacity="21600" freespeed="7.5" functclass="PRIARTER"/>
+<link id="700" from="70" to="100" length="1000" capacity="21600" freespeed="7.5" functclass="PRIARTER"/>
+<link id="701" from="70" to="80" length="1000" capacity="21600" freespeed="7.5" functclass="PRIARTER"/>
+<link id="800" from="80" to="110" length="999" capacity="21600" freespeed="7.5" functclass="PRIARTER"/>
+<link id="801" from="80" to="70" length="1000" capacity="21600" freespeed="7.5" functclass="PRIARTER"/>
+<link id="802" from="80" to="90" length="1000" capacity="21600" freespeed="7.5" functclass="PRIARTER"/>
+<link id="900" from="90" to="120" length="1000" capacity="21600" freespeed="7.5" functclass="PRIARTER"/>
+<link id="901" from="90" to="80" length="1000" capacity="21600" freespeed="7.5" functclass="PRIARTER"/>
+<link id="1000" from="100" to="130" length="1000" capacity="21600" freespeed="7.5" functclass="PRIARTER"/>
+<link id="1001" from="100" to="110" length="1000" capacity="21600" freespeed="7.5" functclass="PRIARTER"/>
+<link id="1100" from="110" to="140" length="999" capacity="21600" freespeed="7.5" functclass="PRIARTER"/>
+<link id="1101" from="110" to="100" length="1000" capacity="21600" freespeed="7.5" functclass="PRIARTER"/>
+<link id="1102" from="110" to="120" length="1000" capacity="21600" freespeed="7.5" functclass="PRIARTER"/>
+<link id="1200" from="120" to="150" length="1000" capacity="21600" freespeed="7.5" functclass="PRIARTER"/>
+<link id="1201" from="120" to="110" length="1000" capacity="21600" freespeed="7.5" functclass="PRIARTER"/>
+<link id="1300" from="130" to="160" length="1000" capacity="21600" freespeed="7.5" functclass="PRIARTER"/>
+<link id="1301" from="130" to="140" length="1000" capacity="21600" freespeed="7.5" functclass="PRIARTER"/>
+<link id="1400" from="140" to="170" length="999" capacity="21600" freespeed="7.5" functclass="PRIARTER"/>
+<link id="1401" from="140" to="130" length="1000" capacity="21600" freespeed="7.5" functclass="PRIARTER"/>
+<link id="1402" from="140" to="150" length="1000" capacity="21600" freespeed="7.5" functclass="PRIARTER"/>
+<link id="1500" from="150" to="180" length="1000" capacity="21600" freespeed="7.5" functclass="PRIARTER"/>
+<link id="1501" from="150" to="140" length="1000" capacity="21600" freespeed="7.5" functclass="PRIARTER"/>
+<link id="1600" from="160" to="190" length="1000" capacity="21600" freespeed="7.5" functclass="PRIARTER"/>
+<link id="1601" from="160" to="170" length="1000" capacity="21600" freespeed="7.5" functclass="PRIARTER"/>
+<link id="1700" from="170" to="200" length="1000" capacity="21600" freespeed="7.5" functclass="PRIARTER"/>
+<link id="1701" from="170" to="160" length="1000" capacity="21600" freespeed="7.5" functclass="PRIARTER"/>
+<link id="1702" from="170" to="180" length="1000" capacity="21600" freespeed="7.5" functclass="PRIARTER"/>
+<link id="1800" from="180" to="210" length="1000" capacity="21600" freespeed="7.5" functclass="PRIARTER"/>
+<link id="1801" from="180" to="170" length="1000" capacity="21600" freespeed="7.5" functclass="PRIARTER"/>
+<link id="1900" from="190" to="220" length="1000" capacity="21600" freespeed="7.5" functclass="PRIARTER"/>
+<link id="2000" from="200" to="230" length="1000" capacity="21600" freespeed="7.5" functclass="PRIARTER"/>
+<link id="2100" from="210" to="240" length="1000" capacity="21600" freespeed="7.5" functclass="PRIARTER"/>
+</links>
+</network>
