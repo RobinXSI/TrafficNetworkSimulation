@@ -1,4 +1,5 @@
-
+#ifndef LINK_H_
+#define LINK_H_
 
 // Forward Declaration because of Circular Dependency
 class Node;
@@ -84,3 +85,5 @@ public:
     }
 
 };
+
+#endif

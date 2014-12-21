@@ -1,3 +1,6 @@
+#ifndef NODE_H_
+#define NODE_H_
+
 typedef double Coordinate;
 
 class Node {
@@ -48,3 +51,5 @@ public:
         randomMoveToLink();
     }
 };
+
+#endif

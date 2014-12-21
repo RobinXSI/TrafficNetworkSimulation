@@ -1,3 +1,6 @@
+#ifndef VEHICLE_H_
+#define VEHICLE_H_
+
 class Vehicle {
 private:
     Id id;
@@ -7,3 +10,5 @@ public:
     Id getId() { return id; }
     void setSpeed(double value) { speed = value; }
 };
+
+#endif
