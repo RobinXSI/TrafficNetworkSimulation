@@ -41,6 +41,7 @@ public:
     void move() {
         randomMoveToLink();
     }
+    double myRand();
 };
 
 #endif

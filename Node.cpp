@@ -2,6 +2,7 @@
 #include "Node.h"
 #include "global.h"
 #include "Vehicle.h"
+#include "Link.h"
 
 void Node::setId(Id value) { id = value; }
 Id Node::getId() { return id; }
@@ -28,7 +29,7 @@ void Node::randomMoveToLink() {
     // them according to it
     for(VLinks::iterator ll=incomingLinks.begin(); ll != incomingLinks.end(); ++ll) {
         Link* link = *ll;
-        randomLinks.insert(std::make_pair(myRand(), link));
+        randomLinks.insert(std::make_pair(this->myRand(), link));
     }
 
     for(RandomLinks::iterator ll = randomLinks.begin(); ll != randomLinks.end(); ++ll) {
@@ -36,7 +37,7 @@ void Node::randomMoveToLink() {
         Vehicle* vehicle = incomingLink->firstOnLink(); // NULL if none
         if(vehicle != NULL) {
             int numberOfOutgoingLinks = outgoingLinks.size();
-            int outgoingLinkIdx = int(myRand() * numberOfOutgoingLinks);
+            int outgoingLinkIdx = int(this->myRand() * numberOfOutgoingLinks);
             Link* theOutgoingLink = getOutgoingLink(outgoingLinkIdx);
             if(theOutgoingLink->hasSpace()) {
                 incomingLink->removeFirstOnLink();
@@ -44,4 +45,8 @@ void Node::randomMoveToLink() {
             }
         }
     }
+}
+double Node::myRand() {
+    std::srand(std::time(0)); // use current time as seed for random generator
+    return std::rand() / RAND_MAX;
 }

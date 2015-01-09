@@ -66,7 +66,7 @@ void Link::move(int& numberOfVehicles) {
     // more here to be added later
 }
 
-void Link::writeVehicleFile() {
+void Link::writeVehicleFile(Time globalTime) {
 
     static int first = 1;
     static std::ofstream snapshotFile;

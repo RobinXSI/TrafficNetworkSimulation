@@ -118,7 +118,7 @@ public:
         std::cout << "## leaving readLinks ...\n\n";
     }
 
-    void simulate(bool& done) {
+    void simulate(bool& done, Time globalTime) {
         int numberOfVehicles = 0;
         // links movement:
         for(Links::iterator ll = links.begin(); ll != links.end(); ++ll) {
@@ -135,7 +135,7 @@ public:
         if(long(globalTime) % skip == 0) {
             for(Links::iterator ll = links.begin(); ll != links.end(); ++ll) {
                 Link* theLink = ll->second;
-                theLink->writeVehicleFile();
+                theLink->writeVehicleFile(globalTime);
             }
         }
 

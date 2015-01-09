@@ -12,6 +12,7 @@ typedef double Length;
 typedef double Coordinate;
 using Id = long;
 
+
 class Link {
 private:
     Id id;
@@ -50,7 +51,7 @@ public:
 
     void move(int& numberOfVehicles);
 
-    void writeVehicleFile();
+    void writeVehicleFile(Time globalTime);
 
 };
 

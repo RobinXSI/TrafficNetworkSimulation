@@ -1,6 +1,8 @@
 
 #include "SimulationWorld.h"
 
+
+
 int main() {
     SimulationWorld simulationWorld;
     simulationWorld.readNodes();
@@ -21,11 +23,17 @@ int main() {
         link->addVehicleToLink(vehicle);
     }
 
+
+
+
     // time iteration:
     int simulationStartTime = 1;
+
+    Time globalTime;
+
     for(globalTime = simulationStartTime; globalTime < 99999; globalTime++) {
         bool done = false;
-        simulationWorld.simulate(done);
+        simulationWorld.simulate(done, globalTime);
         if(done) break;
     }
 
