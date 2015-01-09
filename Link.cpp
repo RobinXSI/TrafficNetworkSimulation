@@ -1,15 +1,14 @@
 #include "Link.h"
 #include <assert.h>
-#include "global.h"
 
 void Link::setId(Id value) { id = value; }
 Id Link::getId() { return id; }
 
-void Link::setFromNode(Node* node) { fromNode = node; }
-Node* Link::getFromNode() { return fromNode; }
+void Link::setFromNode(std::shared_ptr<Node> node) { fromNode = node; }
+std::shared_ptr<Node> Link::getFromNode() { return fromNode; }
 
-void Link::setToNode(Node* node) { toNode = node; }
-Node* Link::getToNode() { return toNode; }
+void Link::setToNode(std::shared_ptr<Node> node) { toNode = node; }
+std::shared_ptr<Node> Link::getToNode() { return toNode; }
 
 void Link::setLength(Length value) { length = value; }
 Length  Link::getLength() { return length; }
@@ -22,12 +21,12 @@ void Link::build() {
     }
 }
 
-void Link::addVehicleToLink(Vehicle* vehicle) {
+void Link::addVehicleToLink(std::shared_ptr<Vehicle> vehicle) {
     assert(streetCells[0] == NULL);
     streetCells[0] = vehicle;
 }
 
-Vehicle* Link::firstOnLink() {
+std::shared_ptr<Vehicle> Link::firstOnLink() {
     return streetCells.back();
 }
 
@@ -44,9 +43,9 @@ bool Link::hasSpace() {
 // Traditional Array Syntax
 // Should be refactored to C++11
 void Link::moveOnLink(int& numberOfVehicles) {
-    int last = streetCells.size() - 1;
+    auto last = streetCells.size() - 1;
     for(int i = 0; i < last; i++) {
-        Vehicle* vehicle = streetCells[i];
+        std::shared_ptr<Vehicle> vehicle = streetCells[i];
         if(vehicle != NULL) {
             numberOfVehicles++;
             if(streetCells[i + 1] == NULL) {
@@ -106,7 +105,7 @@ void Link::writeVehicleFile(Time globalTime) {
         // check if cells have a vehicle on them:
         if(streetCells[ii] != NULL) {
             // get the vehicle and its position on the link:
-            Vehicle* theVehicle = streetCells[ii];
+            std::shared_ptr<Vehicle> theVehicle = streetCells[ii];
             double pos = 7.5 * (ii + 1);
             int lane = 1;
             // calculate geographical coordinates and azimuth:

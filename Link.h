@@ -8,40 +8,42 @@
 #include "Vehicle.h"
 #include "global.h"
 
-typedef double Length;
-typedef double Coordinate;
+using Length = double;
+using Coordinate = double;
 using Id = long;
 
+std::string const SNAPSHOT_FILE_NAME = "/Users/robin/ClionProjects/TrafficNetworkSimulation/output.txt";
 
 class Link {
 private:
     Id id;
-    Node* fromNode;
-    Node* toNode;
+    std::shared_ptr<Node> fromNode;
+    std::shared_ptr<Node> toNode;
     Length length;
 
 
-    typedef std::vector<Vehicle*> StreetCells;
+    using StreetCells = std::vector<std::shared_ptr<Vehicle>>;
+
     StreetCells streetCells;
 
 public:
     void setId(Id value);
     Id getId();
 
-    void setFromNode(Node* node);
-    Node* getFromNode();
+    void setFromNode(std::shared_ptr<Node> node);
+    std::shared_ptr<Node> getFromNode();
 
-    void setToNode(Node* node);
-    Node* getToNode();
+    void setToNode(std::shared_ptr<Node> node);
+    std::shared_ptr<Node> getToNode();
 
     void setLength(Length value);
     Length  getLength();
 
     void build();
 
-    void addVehicleToLink(Vehicle* vehicle);
+    void addVehicleToLink(std::shared_ptr<Vehicle> vehicle);
 
-    Vehicle* firstOnLink();
+    std::shared_ptr<Vehicle> firstOnLink();
 
     void removeFirstOnLink();
 

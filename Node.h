@@ -5,7 +5,7 @@
 
 class Link;
 
-typedef double Coordinate;
+using Coordinate = double;
 using Id = long;
 
 class Node {
@@ -14,7 +14,8 @@ private:
     Coordinate xx; // EASTING
     Coordinate yy; // NORTHING
 
-    typedef std::vector<Link*> VLinks;
+    using VLinks = std::vector<std::shared_ptr<Link>>;
+
     VLinks outgoingLinks;
     VLinks incomingLinks;
 
@@ -28,12 +29,12 @@ public:
     void setYY(Coordinate value);
     Coordinate  getYY();
 
-    void addOutgoingLink(Link* link);
-    Link* getOutgoingLink(int i);
+    void addOutgoingLink(std::shared_ptr<Link> link);
+    std::shared_ptr<Link> getOutgoingLink(int i);
     int countOutgoingLinks();
 
-    void addIncomingLink(Link* link);
-    Link* getIncomingLink(int i);
+    void addIncomingLink(std::shared_ptr<Link> link);
+    std::shared_ptr<Link> getIncomingLink(int i);
     int countIncomingLinks();
 
 
