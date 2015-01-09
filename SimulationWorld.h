@@ -8,13 +8,10 @@
 #include "global.h"
 #include <assert.h>
 #include "Vehicle.h"
-#include "Link.h"
 #include "Node.h"
+#include "Link.h"
 #include <fstream>
 #include <iostream>
-
-const char* NODES_FILE_NAME = "/Users/robin/ClionProjects/TrafficNetworkSimulation/TNodes.txt";
-const char* LINKS_FILE_NAME = "/Users/robin/ClionProjects/TrafficNetworkSimulation/TLinks.txt";
 
 
 
@@ -119,8 +116,37 @@ public:
         }
         std::cout << "nLinks: " << links.size() << "\n";
         std::cout << "## leaving readLinks ...\n\n";
+    }
 
+    void simulate(bool& done) {
+        int numberOfVehicles = 0;
+        // links movement:
+        for(Links::iterator ll = links.begin(); ll != links.end(); ++ll) {
+            Link* theLink = ll->second;
+            theLink->move(numberOfVehicles);
+        }
+        //intersection movement:
+        for(Nodes::iterator nn = nodes.begin(); nn != nodes.end(); ++nn) {
+            Node *theNode = nn->second;
+            theNode->move();
+        }
+        // output
+        int skip = 60;
+        if(long(globalTime) % skip == 0) {
+            for(Links::iterator ll = links.begin(); ll != links.end(); ++ll) {
+                Link* theLink = ll->second;
+                theLink->writeVehicleFile();
+            }
+        }
 
+        if(long(globalTime) % 1000 == 0) {
+            std::cout << "Step: " << globalTime << " NVehs: " << numberOfVehicles << std::endl;
+        }
+
+        done = false;
+        if(numberOfVehicles == 0) {
+            done = true;
+        }
 
     }
 
@@ -129,7 +155,7 @@ public:
         tokens.push_back("TRASH");
         std::string buf;
         std::stringstream ss(str);
-        while(ss >> buf) {
+        while (ss >> buf) {
             tokens.push_back(buf);
         }
     }

@@ -1,7 +1,12 @@
 #ifndef NODE_H_
 #define NODE_H_
 
+#include <vector>
+
+class Link;
+
 typedef double Coordinate;
+using Id = long;
 
 class Node {
 private:
@@ -14,39 +19,25 @@ private:
     VLinks incomingLinks;
 
 public:
-    void setId(Id value) { id = value; }
-    Id getId() { return id; }
+    void setId(Id value);
+    Id getId();
 
-    void setXX(Coordinate value) { xx = value; }
-    Coordinate getXX() { return xx; }
+    void setXX(Coordinate value);
+    Coordinate getXX();
 
-    void setYY(Coordinate value) { yy = value; }
-    Coordinate  getYY() { return yy; }
+    void setYY(Coordinate value);
+    Coordinate  getYY();
 
-    void addOutgoingLink(Link* link) { outgoingLinks.push_back(link); }
-    Link* getOutgoingLink(int i) { return outgoingLinks[i]; }
-    int countOutgoingLinks() { return outgoingLinks.size(); }
+    void addOutgoingLink(Link* link);
+    Link* getOutgoingLink(int i);
+    int countOutgoingLinks();
 
-    void addIncomingLink(Link* link) { incomingLinks.push_back(link); }
-    Link* getIncomingLink(int i) { return incomingLinks[i]; }
-    int countIncomingLinks() { return incomingLinks.size(); }
+    void addIncomingLink(Link* link);
+    Link* getIncomingLink(int i);
+    int countIncomingLinks();
 
 
-    void randomMoveToLink() {
-        for(VLinks::iterator ll = incomingLinks.begin(); ll != incomingLinks.end(); ++ll) {
-            Link* incomingLink = (Link *) *ll;
-            Vehicle* vehicle = incomingLink->firstOnLink(); // NULL if none
-            if(vehicle != NULL) {
-                int numberOfOutgoingLinks = outgoingLinks.size();
-                int outgoingLinkIdx = int(myRand() * numberOfOutgoingLinks);
-                Link* theOutgoingLink = getOutgoingLink(outgoingLinkIdx);
-                if(theOutgoingLink->hasSpace()) {
-                    incomingLink->removeFirstOnLink();
-                    theOutgoingLink->addVehicleToLink(vehicle);
-                }
-            }
-        }
-    }
+    void randomMoveToLink();
     void move() {
         randomMoveToLink();
     }
